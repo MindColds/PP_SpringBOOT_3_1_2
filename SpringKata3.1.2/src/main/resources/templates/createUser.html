@@ -1,0 +1,118 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>CREATEUSER</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Edit User</h2>-->
+<!--    <form method="post" th:action="@{/createUser}" th:object="${user}">-->
+<!--        <table th:border="2">-->
+<!--            <tr>-->
+<!--                <td>Name:</td>-->
+<!--                <td><input type="text" th:field="${user.name}"/></td>-->
+<!--            </tr>-->
+<!--            <br>-->
+<!--            <tr>-->
+<!--                <td>Patronim:</td>-->
+<!--                <td><input type="text" th:field="${user.patronim}"/></td>-->
+<!--            </tr>-->
+<!--            <br>-->
+<!--            <tr>-->
+<!--                <td>Surname:</td>-->
+<!--                <td><input type="text" th:field="${user.surname}"/></td>-->
+<!--            </tr>-->
+<!--            <br>-->
+<!--            <tr>-->
+<!--                <td>Age:</td>-->
+<!--                <td><input type="number" th:field="${user.age}"/></td>-->
+<!--            </tr>-->
+<!--            <br>-->
+<!--            <tr>-->
+<!--                <td>Email:</td>-->
+<!--                <td><input type="text" th:field="${user.email}"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td colspan="2"><input type="submit" value="Save"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATE</title>
+</head>
+<body>
+<div th:align="center">
+    <h2>Create User</h2>
+    <form th:method="POST" th:action="@{/admin/create}" th:object="${user}">
+        <table th:border="2" th:cellpadding="15">
+            <tr>
+                <td>username</td>
+                <td><input type="text" name="username"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" th:field="*{name}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Patronim</td>
+                <td><input type="text" th:field="*{patronim}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td><input type="text" th:field="*{surname}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="number" th:field="*{age}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" th:field="*{email}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text" th:field="*{password}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td><input type="checkbox" name="nameRole"
+                           th:each="role : ${roleName}"
+                           th:text="${role.name}"
+                           th:value="${role.name}">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Create"/>
+    </form>
+
+    <br>
+
+
+    <form th:action="@{/admin}" method="get">
+        <input type="submit" value="Back"/>
+    </form>
+    <br>
+
+    <form th:action="@{/logout}" method="get">
+        <input type="submit" value="exit"/>
+    </form>
+
+    </form>
+</div>
+</body>
+</html>
